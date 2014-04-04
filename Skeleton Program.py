@@ -131,14 +131,18 @@ def IsNextCardHigher(LastCard, NextCard):
 
 def GetPlayerName():
   print()
-  PlayerName = input('Please enter your name: ')
+  PlayerName = None
+  while not PlayerName:
+    PlayerName = input('Please enter your name: ')
+    if PlayerName == "":
+      print("You must enter something for your name!")
   print()
   return PlayerName
 
 def GetChoiceFromUser():
   Choice = input('Do you think the next card will be higher than the last card (enter y or n)? ')
   Choice = Choice[0]
-  Choice = Choice.lower()
+#  Choice = Choice.lower()
   return Choice
 
 def DisplayEndOfGameMessage(Score):
