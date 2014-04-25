@@ -7,7 +7,8 @@
 ######test change#############
 
 import random
-import datetime
+import time
+
 
 NO_OF_RECENT_SCORES = 3
 
@@ -169,7 +170,7 @@ def ResetRecentScores(RecentScores):
 def DisplayRecentScores(RecentScores):
   print()
   print('Recent Scores: ')
-  print("{0:<10} {1:<10} {2:<10}".format("Name","Score","Date / Time"))
+  print("{0:<10} {1:<10} {2:<10}".format("Name","Score","Date"))
   for Count in range(1, NO_OF_RECENT_SCORES + 1):
     print("{0:<10} {1:<10} {2:<10}".format(RecentScores[Count].Name, RecentScores[Count].Score, RecentScores[Count].dateTime))
   print()
@@ -198,7 +199,7 @@ def UpdateRecentScores(RecentScores, Score):
       Count = NO_OF_RECENT_SCORES
     RecentScores[Count].Name = PlayerName
     RecentScores[Count].Score = Score
-    RecentScores[Count].dateTime = datetime.strftime("%Y-%m-%d %H:%M:%S")
+    RecentScores[Count].dateTime = time.strftime("%d/%m/%Y")
 
 
 def PlayGame(Deck, RecentScores):
