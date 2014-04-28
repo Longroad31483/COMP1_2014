@@ -8,6 +8,7 @@
 
 import random
 import time
+import pickle
 
 
 NO_OF_RECENT_SCORES = 3
@@ -233,6 +234,21 @@ def UpdateRecentScores(RecentScores, Score):
     RecentScores[Count].Score = Score
     RecentScores[Count].dateTime = time.strftime("%d/%m/%Y")
 
+def BubbleSortScores(RecentScores):
+  swapped = False
+  count = 0
+  while not swapped:
+    if RecentScores[count].Score < RecentScores[count+1].Score:
+      swapped = true
+      temp = RecentScores[count]
+      RecentScores[count] = RecentScores[count+1]
+      RecentScores[count+1] = RecentScores[count]
+    count = count+1
+
+def SaveHighScores(RecentScores):
+  pass
+def LoadHighScores():
+  pass      
 
 def PlayGame(Deck, RecentScores):
   LastCard = TCard()
@@ -279,6 +295,7 @@ if __name__ == '__main__':
       LoadDeck(Deck)
       PlayGame(Deck, RecentScores)
     elif Choice == '3':
+      BubbleSortScores(RecentScores)
       DisplayRecentScores(RecentScores)
     elif Choice == '4':
       ResetRecentScores(RecentScores)
