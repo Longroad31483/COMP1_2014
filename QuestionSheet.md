@@ -26,12 +26,14 @@
    Follower - A Variable that gets its data from another variable
    Temporary - A Variable that holds a piece of data for a short time only
    
-2. Fixed Value - NO_OF_RECENT_SCORES
-   Stepper - Count
-   Most Recent Holder - Deck[count].Suit
-   Most Wanted Holder - 
-   Gatherer - 
-   Transformation - 
+2. Fixed Value - NoOfSwaps (98)
+   Stepper - Count (162)
+   Most Recent Holder - Choice (197)
+   Most Wanted Holder - NextCard (188)
+   Gatherer - /
+   Transformation - Higher (123)
+   Follower - LastCard (187)
+   Temporary - SwapSpace (97)
    
 ##Additional Task - Functions and Parameters
 1.When you pass by value into a function the piece of data that you are working on
