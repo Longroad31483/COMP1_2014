@@ -201,6 +201,7 @@ def ResetRecentScores(RecentScores):
     RecentScores[Count].Score = 0
     
 def DisplayRecentScores(RecentScores):
+  BubbleSortScores(RecentScores)
   print()
   print('Recent Scores: ')
   print("{0:<10} {1:<10} {2:<10}".format("Name","Score","Date"))
@@ -235,15 +236,16 @@ def UpdateRecentScores(RecentScores, Score):
     RecentScores[Count].dateTime = time.strftime("%d/%m/%Y")
 
 def BubbleSortScores(RecentScores):
-  swapped = False
-  count = 0
-  while not swapped:
-    if RecentScores[count].Score < RecentScores[count+1].Score:
-      swapped = true
-      temp = RecentScores[count]
-      RecentScores[count] = RecentScores[count+1]
-      RecentScores[count+1] = RecentScores[count]
-    count = count+1
+  swapMade = True
+  list_length = len(RecentScores)
+  while swapMade:
+    swapMade = False
+    list_length = list_length -1
+    for Count in range(1,list_length):
+      if RecentScores[Count].Score < RecentScores[Count+1].Score:
+        temp = RecentScores[Count]
+        RecentScores[Count] = RecentScores[Count+1]
+        RecentScores[Count+1] = temp
 
 def SaveHighScores(RecentScores):
   pass
