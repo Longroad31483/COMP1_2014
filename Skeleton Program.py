@@ -81,6 +81,7 @@ def DisplayMenu():
   print('4. Reset recent scores')
   print("5. Options")
   print("6. Save Game")
+  print("7. Load Game")
   print('Select an option from the menu (or enter q to quit): ', end='')
 
 def DisplayOptions():
@@ -249,23 +250,23 @@ def BubbleSortScores(RecentScores):
         RecentScores[Count+1] = temp
 
 def SaveHighScores(RecentScores):
-  with open("Scores.txt", mode="w", encoding="utf-8")as savescores:
+  with open("Save_Scores.txt", mode="w", encoding="utf-8")as savescores:
     for count in range(1,len(RecentScores)):
       savescores.write((RecentScores[count].Name) + "\n")
-      savescores.write(str(RecentScores[count].Score) + "\n")
-      savescores.write(str(RecentScores[count].dateTime) +"\n" )
+      savescores.write((str(RecentScores[count].Score) + "\n"))
+      savescores.write((str(RecentScores[count].dateTime) +"\n" ))
 
             
 def LoadHighScores():
-  Score3 = TRecentScore()
-  RecentScores = []
-  with open("Scores.txt", mode="r", encoding="utf-8") as my_file:
-  for count in range(1,NO_OF_RECENT_SCORES):
-    Score3.Name = my_file.readline()
-    Score3.Score = my_file.readline()
-    Score3.dateTime = my_file.readline()
-    RecentScores.append(Score3)
-  return
+  RecentScores = [""]
+  with open("Save_Scores.txt", mode="r", encoding="utf-8") as Scores:
+    for count in range(1,NO_OF_RECENT_SCORES +1):
+      Score3 = TRecentScore()
+      Score3.Name = Scores.readline().rstrip("\n")
+      Score3.Score = Scores.readline().rstrip("\n")
+      Score3.dateTime = Scores.readline().rstrip("\n")
+      RecentScores.append(Score3)
+    return RecentScores
 
 def PlayGame(Deck, RecentScores):
   LastCard = TCard()
@@ -322,3 +323,5 @@ if __name__ == '__main__':
       SetOptions(OptionChoice)
     elif Choice == "6":
       SaveHighScores(RecentScores)
+    elif Choice == "7":
+      RecentScores = LoadHighScores()
